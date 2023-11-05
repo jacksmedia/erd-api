@@ -1,57 +1,31 @@
 import './App.css';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function App() {
   // Create a state variable to store the user input
   const [userInput, setUserInput] = useState('');
   
-  // Create a function to handle the user input change
+  // Function to handle the user input change
   const handleInputChange = (event) => {
     setUserInput(event.target.value);
   }
-  
+  // Create a state variable to store the wallet data
   const [data, setData] = useState([]);
 
-  // Simulate an API call to set the data
-  useEffect(() => {
-    // Replace this with your actual API call
-    // For example:
-    // fetch('your-api-endpoint')
-    //   .then((response) => response.json())
-    //   .then((data) => setData(data));
-
-    // Simulated API data
-    const jsonData = [
-      {
-        "name": "Elrond AnimeShibas #1",
-        "url": "https://media.elrond.com/nfts/asset/QmeJnpsR5Vh1Yd3CArW4o5u4arT3sbxvqwheJfD5Cjsc94/1.png"
-      },
-      {
-        "name": "Elrond AnimeShibas #2",
-        "url": "https://media.elrond.com/nfts/asset/QmeJnpsR5Vh1Yd3CArW4o5u4arT3sbxvqwheJfD5Cjsc94/2.png"
-      },
-      {
-        "name": "Elrond AnimeShibas #3",
-        "url": "https://media.elrond.com/nfts/asset/QmeJnpsR5Vh1Yd3CArW4o5u4arT3sbxvqwheJfD5Cjsc94/3.png"
-      }
-      // Add more data as needed
-    ];
-    setData(jsonData);
-  }, []);
-
-  // Create a function to process the user input
+  // Function to process the user input
   const processInput = () => {
-    // You can perform any processing or call your desired function here
-    alert(`You entered wallet: ${userInput}`);
-
+    // basic NFT metadata call, only using 2 properties rn
+    fetch(`https://api.multiversx.com/accounts/${userInput}/nfts?size=999&hasUris=true&includeFlagged=true&excludeMetaESDT=false`)
+      .then((response) => response.json())
+      .then((data) => setData(data));
   }
 
   return (
     <div className='wholeapp'>
-      <h1>React Input Boiler</h1>
+      <h1>MultiversX Prototype API Caller: v1, NFT data </h1>
       <form>
         <label>
-          <span>Enter erd:</span>
+          <span>Enter your erd:</span>
           <input
             type="text"
             value={userInput}
@@ -59,21 +33,21 @@ function App() {
           />
         </label>
         <button type="button" onClick={processInput}>
-          Do something w erd! (Soon fetch from API 🫡)
+          Paste wallet address & push me 🟩
         </button>
       </form>
       <div>
         <h3>Your wallet contains . . .</h3>
-        <ul>
+        <div className="grid-container">
           {data.map((item, index) => (
-            <li key={index}>
-              <h2>{item.name}</h2>
+            <div className="grid-item" key={index}>
               <img src={item.url} alt={item.name} className='NFTimg'/>
-            </li>
+              <div className="caption">{item.name}</div>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
-      <div className="footsy">By <a href='http://Jacks.Media'>Jacks.Media</a></div>
+      {/* <div className="footsy">By <a href='http://Jacks.Media'>Jacks.Media</a></div> */}
     </div>
   );
 }

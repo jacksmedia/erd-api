@@ -2,6 +2,9 @@ import './App.css';
 import React, { useState } from 'react';
 
 function App() {
+  // Discover current time; convert to make it useful
+  const currTime = new Date().toLocaleTimeString();
+
   // Create a state variable to store the user input
   const [userInput, setUserInput] = useState('');
   
@@ -22,6 +25,21 @@ function App() {
     .then((data) => setData(data));
   }
 
+  // Function to convert timestamp to useful Date/Time info
+  const timeDecrypt = (inputTimeStamp) => {
+    const date = new Date(inputTimeStamp * 1000); // Convert Unix timestamp to milliseconds
+
+    // Get the various components of the date
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1; // Month is 0-indexed, so we add 1
+    const day = date.getDate();
+    const hours = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
+
+    return (<span>{`${year}-${month}-${day} ${hours}:${minutes}:${seconds}`}</span>)
+  }
+
   return (
     <div className='wholeapp'>
       <h1>MultiversX Prototype API Caller: v1.5, Tx data </h1>
@@ -39,12 +57,18 @@ function App() {
         </button>
       </form>
       <div>
-        <h3>Tx hashes will appear below . . .</h3>
+        <h4>Current time is: {currTime}</h4>
+        <h3>Transactions (tx's) will appear below . . .</h3>
         <div className='table-container'>
           {data.map((item,index) => (
             <div className='table-row'>
               <div className='row-item' key={index}>
-                <div className="caption">{item.txHash} <br/>sent to:{item.receiver}<br/> sent from:{item.sender}<br/>sent:{item.timestamp}</div>
+                <div className="caption">
+                  tx @:{timeDecrypt(item.timestamp)}<br/>
+                  sent to: {item.receiver}<br/>
+                  sent from: {item.sender}<br/>
+                  tx hash: {item.txHash}
+                </div>
               </div>
             </div>
           ))}

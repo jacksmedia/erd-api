@@ -2,7 +2,8 @@ import './App.css';
 import React, { useState } from 'react';
 
 function App() {
-  // Discover current time; convert to make it useful
+  // Discover current time;
+  // convert to make it useful
   const currTime = new Date().toLocaleTimeString();
 
   // Create a state variable to store the user input
@@ -15,16 +16,19 @@ function App() {
   // Create a state variable to store the wallet data
   const [data, setData] = useState([]);
 
-  // Function to process the user input
-  const processInput = () => {
-    // basic NFT metadata call, only using 2 properties rn
-    // NFT endpoint call
-    // fetch(`https://api.multiversx.com/accounts/${userInput}/nfts?size=999&hasUris=true&includeFlagged=true&excludeMetaESDT=false`)
-    fetch(`https://api.multiversx.com/accounts/${userInput}/transactions?size=299&before=1699248999`)
+// Function to process the user input
+const processInput = () => {
+  fetch(`https://api.multiversx.com/accounts/${userInput}/transactions?size=299&before=1699248999`)
     .then((response) => response.json())
-    .then((data) => setData(data));
-  }
-
+    .then((data) => {
+      // Assuming data structure has 'item' property
+      const description = data?.item?.action?.description ?? 'N/A';
+      setData(data); // Setting entire data into state
+    })
+    .catch((error) => {
+      console.error('Error fetching data:', error);
+    });
+};
   // Function to convert timestamp to useful Date/Time info
   const timeDecrypt = (inputTimeStamp) => {
     const date = new Date(inputTimeStamp * 1000); // Convert Unix timestamp to milliseconds
@@ -33,9 +37,9 @@ function App() {
     const year = date.getFullYear();
     const month = date.getMonth() + 1; // Month is 0-indexed, so we add 1
     const day = date.getDate();
-    const hours = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
+    const hours = date.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+    const minutes = date.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+    const seconds = date.getSeconds().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
 
     return (<span>{`${year}-${month}-${day} ${hours}:${minutes}:${seconds}`}</span>)
   }
@@ -67,6 +71,8 @@ function App() {
                   tx @:{timeDecrypt(item.timestamp)}<br/>
                   sent to: {item.receiver}<br/>
                   sent from: {item.sender}<br/>
+                  <span className='beefy-text'>type of tx: {item.function}</span><br/>
+                  <h2>Description: {item.description || 'N/A'}</h2><br/>
                   tx hash: {item.txHash}
                 </div>
               </div>

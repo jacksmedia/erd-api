@@ -78,6 +78,11 @@ code {
   max-width: 100px;
 }
 
+.beefy-text {
+  font-weight: 800;
+  font-style: italic;
+}
+
 /* .footsy {
   position: absolute;
   bottom: calc(100% - 10px);

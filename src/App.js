@@ -1,5 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
+import DisplayJSON from './DisplayJson.js';
 
 function App() {
   // Discover current time;
@@ -64,7 +65,8 @@ const processInput = () => {
         <h4>Current time is: {currTime}</h4>
         <h3>Transactions (tx's) will appear below . . .</h3>
         <div className='table-container'>
-          {data.map((item,index) => (
+          <DisplayJSON jsonData={data} />
+          {/* {data.map((item,index) => (
             <div className='table-row'>
               <div className='row-item' key={index}>
                 <div className="caption">
@@ -77,7 +79,7 @@ const processInput = () => {
                 </div>
               </div>
             </div>
-          ))}
+          ))} */}
         </div>
         {/* below is for NFT call, expand into anouther route! */}
         {/* <div className="grid-container">

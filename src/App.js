@@ -31,19 +31,19 @@ const processInput = () => {
     });
 };
   // Function to convert timestamp to useful Date/Time info
-  const timeDecrypt = (inputTimeStamp) => {
-    const date = new Date(inputTimeStamp * 1000); // Convert Unix timestamp to milliseconds
+  // const timeDecrypt = (inputTimeStamp) => {
+  //   const date = new Date(inputTimeStamp * 1000); // Convert Unix timestamp to milliseconds
 
-    // Get the various components of the date
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1; // Month is 0-indexed, so we add 1
-    const day = date.getDate();
-    const hours = date.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-    const minutes = date.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-    const seconds = date.getSeconds().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+  //   // Get the various components of the date
+  //   const year = date.getFullYear();
+  //   const month = date.getMonth() + 1; // Month is 0-indexed, so we add 1
+  //   const day = date.getDate();
+  //   const hours = date.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+  //   const minutes = date.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
+  //   const seconds = date.getSeconds().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
 
-    return (<span>{`${year}-${month}-${day} ${hours}:${minutes}:${seconds}`}</span>)
-  }
+  //   return (<span>{`${year}-${month}-${day} ${hours}:${minutes}:${seconds}`}</span>)
+  // }
 
   return (
     <div className='wholeapp'>

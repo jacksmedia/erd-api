@@ -1,6 +1,6 @@
 import './App.css';
 import React, { useState } from 'react';
-import DisplayJSON from './DisplayJson.js';
+import NestedList from './NestedList.js';
 
 function App() {
   // Discover current time;
@@ -23,7 +23,7 @@ const processInput = () => {
     .then((response) => response.json())
     .then((data) => {
       // Assuming data structure has 'item' property
-      const description = data?.item?.action?.description ?? 'N/A';
+      // const description = data?.item?.action?.description ?? 'N/A';
       setData(data); // Setting entire data into state
     })
     .catch((error) => {
@@ -65,7 +65,7 @@ const processInput = () => {
         <h4>Current time is: {currTime}</h4>
         <h3>Transactions (tx's) will appear below . . .</h3>
         <div className='table-container'>
-          <DisplayJSON jsonData={data} />
+          <NestedList data={data} />
           {/* {data.map((item,index) => (
             <div className='table-row'>
               <div className='row-item' key={index}>

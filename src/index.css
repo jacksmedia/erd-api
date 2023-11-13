@@ -15,9 +15,17 @@ body {
   height: 100vh;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+li {
+  list-style-type: none;
+  padding-bottom: 0px;
+}
+ul {
+  padding-bottom: 0px;
+}
+ul:not(ul li) {
+  outline: 1px solid #fff; /* Add your desired outline style here */
+  padding: 2px; /* Optional: Add padding for better visual appearance */
+  background-color: rgba(0, 0, 0, .05);
 }
 
 .table-container {
@@ -35,16 +43,21 @@ code {
   display: flex;
   flex-flow: row nowrap;
   width: 100%;
+  justify-content: left;
+  align-content: flex-start;
   border-bottom: 1px solid #dadada;
 }
 
 .row-item {
+  color: #f00;
   display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+  justify-content: left;
+  max-width: inherit;
   flex: 1;
   font-size: 14px;
   padding: 8px 0;
-  justify-content: center;
-  align-items: center;
 }
 
 .grid-container {

@@ -9,7 +9,7 @@ const DisplayJSON = ({ jsonData }) => {
       <h2>Wallet Transactions in raw JSON:</h2>
       <ul>
         {entries.map(([key, value]) => (
-          <li key={key}>
+          <li key={key} className='row-item'>
             <strong>{key}:</strong> {JSON.stringify(value)}
           </li>
         ))}

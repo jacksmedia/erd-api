@@ -3,14 +3,14 @@ import React from 'react';
 const TransactionDetails = ({ gasLimit, gasPrice, gasUsed, miniBlockHash, nonce, round, signature, data }) => {
   return (
     <div className="transaction-details">
-      <p>Gas Limit: {gasLimit}</p>
-      <p>Gas Price: {gasPrice}</p>
-      <p>Gas Used: {gasUsed}</p>
-      <p>Mini Block Hash: {miniBlockHash}</p>
-      <p>Nonce: {nonce}</p>
-      <p>Round: {round}</p>
-      <p>Signature: {signature}</p>
-      <p>Data: {data}</p>
+      <span className='row-item'>Gas Limit: {gasLimit}</span>
+      <span className='row-item'>Gas Price: {gasPrice}</span>
+      <span className='row-item'>Gas Used: {gasUsed}</span>
+      <span className='row-item'>Mini Block Hash: {miniBlockHash}</span>
+      <span className='row-item'>Nonce: {nonce}</span>
+      <span className='row-item'>Round: {round}</span>
+      <span className='row-item'>Signature: {signature}</span>
+      <span className='row-item'>Data: {data}</span>
     </div>
   );
 };

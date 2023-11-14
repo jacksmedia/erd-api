@@ -19,48 +19,53 @@ li {
   list-style-type: none;
   padding-bottom: 0px;
 }
-ul {
-  padding-bottom: 0px;
-}
-ul:not(ul li) {
-  outline: 1px solid #fff; /* Add your desired outline style here */
-  padding: 2px; /* Optional: Add padding for better visual appearance */
-  background-color: rgba(0, 0, 0, .05);
+
+.row{
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: baseline;
 }
 
 .table-container {
   display: flex;
   flex-flow: column nowrap;
   background-color: white;
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
   border-radius: 4px;
   border: 1px solid #dadada;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, .08);
 }
 
-.table-row {
+
+.transaction-card { 
   display: flex;
-  flex-flow: row nowrap;
-  width: 100%;
-  justify-content: left;
-  align-content: flex-start;
+  flex-flow: column nowrap;
+  flex-wrap: nowrap;
+  align-items: left;
+  justify-content: space-around;
+}
+
+.table-row { 
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-around;
   border-bottom: 1px solid #dadada;
 }
 
 .row-item {
-  color: #f00;
+  color: #066;
+  font-size: 8px;
   display: flex;
   flex-flow: row wrap;
   align-content: flex-start;
-  justify-content: left;
-  max-width: inherit;
   flex: 1;
-  font-size: 14px;
-  padding: 8px 0;
+  max-width: 18vw;
+  padding-bottom: 1px 0;
 }
 
-.grid-container {
+/* .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 16px;
@@ -94,7 +99,7 @@ ul:not(ul li) {
 .beefy-text {
   font-weight: 800;
   font-style: italic;
-}
+} */
 
 /* .footsy {
   position: absolute;

@@ -34,7 +34,10 @@ const processInput = () => {
 
   return (
     <div className='wholeapp'>
-      <h1>MultiversX Prototype API Caller: v1.5, Tx data </h1>
+      <div className='row'>
+        <h1>MultiversX WalletView: v1.7</h1>
+        <h6>Another <a href='https://Jacks.Media'>Jacks.Media</a> app</h6>
+      </div>
       <form>
         <label>
           <span>Enter your erd:</span>

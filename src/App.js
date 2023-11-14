@@ -1,12 +1,12 @@
 import './App.css';
 import React, { useState } from 'react';
-// import NestedList from './NestedList.js';
 import Dashboard from './Dashboard.js';
 
 function App() {
   // Discover current time;
+  const currTimestamp = new Date();
   // convert to make it useful
-  const currTime = new Date().toLocaleTimeString();
+  const currTime = currTimestamp.toLocaleTimeString();
 
   // Create a state variable to store the user input
   const [userInput, setUserInput] = useState('');
@@ -20,7 +20,7 @@ function App() {
 
 // Function to process the user input
 const processInput = () => {
-  fetch(`https://api.multiversx.com/accounts/${userInput}/transactions?size=299&before=1699248999`)
+  fetch(`https://api.multiversx.com/accounts/${userInput}/transactions?size=799`)
     .then((response) => response.json())
     .then((data) => {
       // Assuming data structure has 'item' property
@@ -31,20 +31,6 @@ const processInput = () => {
       console.error('Error fetching data:', error);
     });
 };
-  // Function to convert timestamp to useful Date/Time info
-  // const timeDecrypt = (inputTimeStamp) => {
-  //   const date = new Date(inputTimeStamp * 1000); // Convert Unix timestamp to milliseconds
-
-  //   // Get the various components of the date
-  //   const year = date.getFullYear();
-  //   const month = date.getMonth() + 1; // Month is 0-indexed, so we add 1
-  //   const day = date.getDate();
-  //   const hours = date.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-  //   const minutes = date.getMinutes().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-  //   const seconds = date.getSeconds().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false});
-
-  //   return (<span>{`${year}-${month}-${day} ${hours}:${minutes}:${seconds}`}</span>)
-  // }
 
   return (
     <div className='wholeapp'>
@@ -67,22 +53,8 @@ const processInput = () => {
         <h3>Transactions (tx's) will appear below . . .</h3>
         <div className='table-container'>
           <Dashboard transactions={data} />
-          {/* {data.map((item,index) => (
-            <div className='table-row'>
-              <div className='row-item' key={index}>
-                <div className="caption">
-                  tx @:{timeDecrypt(item.timestamp)}<br/>
-                  sent to: {item.receiver}<br/>
-                  sent from: {item.sender}<br/>
-                  <span className='beefy-text'>type of tx: {item.function}</span><br/>
-                  <h2>Description: {item.description || 'N/A'}</h2><br/>
-                  tx hash: {item.txHash}
-                </div>
-              </div>
-            </div>
-          ))} */}
         </div>
-        {/* below is for NFT call, expand into anouther route! */}
+        {/* below is for NFT call, expand into another route! */}
         {/* <div className="grid-container">
           {data.map((item, index) => (
             <div className="grid-item" key={index}>

@@ -1,6 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
-import NestedList from './NestedList.js';
+// import NestedList from './NestedList.js';
+import Dashboard from './Dashboard.js';
 
 function App() {
   // Discover current time;
@@ -65,7 +66,7 @@ const processInput = () => {
         <h4>Current time is: {currTime}</h4>
         <h3>Transactions (tx's) will appear below . . .</h3>
         <div className='table-container'>
-          <NestedList data={data} />
+          <Dashboard transactions={data} />
           {/* {data.map((item,index) => (
             <div className='table-row'>
               <div className='row-item' key={index}>

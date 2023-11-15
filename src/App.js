@@ -1,7 +1,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import Dashboard from './Dashboard.js';
-import * as DappUI from '@multiversx/sdk-dapp/UI';
+// import * as DappUI from '@multiversx/sdk-dapp/UI';
 
 // wallet-connect ProjectID: d54539c88deb228823b6789a19746e0b
 

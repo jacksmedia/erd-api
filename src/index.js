@@ -1,13 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import {
+  DappProvider,
+  AuthenticatedRoutesWrapper,
+  AppInitializer
+} from '@multiversx/sdk-dapp/wrappers';
+// import * as DappUI from '@multiversx/sdk-dapp/UI';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* Setup WalletConnect w unique ProjectId */}
+    <DappProvider
+      environment="mainnet"
+      customNetworkConfig={{
+        name: 'customConfig',
+        walletConnectV2ProjectId: 'd54539c88deb228823b6789a19746e0b'
+      }}
+    >
+      <App />
+    </DappProvider>
   </React.StrictMode>
 );
 

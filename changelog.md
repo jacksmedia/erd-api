@@ -23,7 +23,7 @@ initial romhack is PixelFreemaster KickButz
     changed stats to Vitality from Magic Power
 
 + Twin Lance
-    renamed to Balisong (esp since Monk can equip)
+    renamed to Balisong, still Spear effect tho 🤷‍♂️
 
 ## Work To Do
 adjust 30 BLU spells' names in status menu

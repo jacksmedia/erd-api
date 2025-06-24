@@ -44,6 +44,7 @@ const processInput = () => {
           <input
             type="text"
             value={userInput}
+            placeholder="erd1xuf43l9v4d3lxhfg9ehzh244592gf2an7hmuw9h84gma7j8fdsws60rrqn"
             onChange={handleInputChange}
           />
         </label>

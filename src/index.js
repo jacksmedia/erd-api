@@ -2,9 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import {
-  DappProvider,
-  AuthenticatedRoutesWrapper,
-  AppInitializer
+  DappProvider
 } from '@multiversx/sdk-dapp/wrappers';
 // import * as DappUI from '@multiversx/sdk-dapp/UI';
 import App from './App';
